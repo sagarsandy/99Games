@@ -8,6 +8,8 @@ import '../features/games/number_slide/cubit/number_slide_cubit.dart';
 import '../features/games/number_slide/presentation/number_slide_screen.dart';
 import '../features/games/tic_tac_toe/cubit/tic_tac_toe_cubit.dart';
 import '../features/games/tic_tac_toe/presentation/tic_tac_toe_screen.dart';
+import '../features/games/word_search/cubit/word_search_cubit.dart';
+import '../features/games/word_search/presentation/word_search_screen.dart';
 import '../features/home/presentation/home_screen.dart';
 import '../features/settings/presentation/settings_screen.dart';
 
@@ -37,6 +39,13 @@ final GoRouter appRouter = GoRouter(
         create: (_) =>
             BlockPuzzleCubit(statsStorage: getIt<GameStatsStorage>()),
         child: const BlockPuzzleScreen(),
+      ),
+    ),
+    GoRoute(
+      path: '/games/word-search',
+      builder: (context, state) => BlocProvider(
+        create: (_) => WordSearchCubit(statsStorage: getIt<GameStatsStorage>()),
+        child: const WordSearchScreen(),
       ),
     ),
     GoRoute(

@@ -60,6 +60,28 @@ void main() {
       expect(find.text('vs Computer'), findsOneWidget);
       expect(find.text('2 Players'), findsOneWidget);
       expect(find.text('Restart Board'), findsOneWidget);
+
+      // Return to Home
+      await tester.tap(find.byTooltip('Back to Home'));
+      await tester.pumpAndSettle();
+
+      // 4. Navigate to Word Search
+      await tester.tap(find.text('Word Search'));
+      await tester.pumpAndSettle();
+
+      // Verify Word Search screen opened
+      expect(find.text('Word Search'), findsOneWidget);
+      expect(find.text('Easy'), findsOneWidget);
+      expect(find.text('Words to Find'), findsOneWidget);
+      expect(find.text('New Puzzle'), findsWidgets);
+
+      // Return to Home
+      await tester.tap(find.byTooltip('Back to Home'));
+      await tester.pumpAndSettle();
+
+      // Verify back on Home
+      expect(find.text('99 Mini Games'), findsOneWidget);
+      expect(find.text('Word Search'), findsOneWidget);
     },
   );
 }

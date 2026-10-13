@@ -44,6 +44,18 @@ class HomeCubit extends Cubit<HomeState> {
       playerLabel: '1 Player',
       route: '/games/block-puzzle',
     ),
+    // 4. Playable Game: Word Search
+    GameInfo(
+      id: StorageKeys.gameWordSearch,
+      title: 'Word Search',
+      description: 'Find hidden words across themed puzzle boards',
+      category: GameCategory.word,
+      icon: Icons.spellcheck_rounded,
+      accentColor: Color(0xFF10B981),
+      isPlayable: true,
+      playerLabel: '1 Player',
+      route: '/games/word-search',
+    ),
     // Future Games (Preview only - strictly non-playable as per specification)
     GameInfo(
       id: 'sudoku',
@@ -62,16 +74,6 @@ class HomeCubit extends Cubit<HomeState> {
       category: GameCategory.brain,
       icon: Icons.style_rounded,
       accentColor: Color(0xFFEC4899),
-      isPlayable: false,
-      playerLabel: '1 Player',
-    ),
-    GameInfo(
-      id: 'word_search',
-      title: 'Word Search',
-      description: 'Find hidden words across themed puzzle boards',
-      category: GameCategory.word,
-      icon: Icons.spellcheck_rounded,
-      accentColor: Color(0xFF10B981),
       isPlayable: false,
       playerLabel: '1 Player',
     ),

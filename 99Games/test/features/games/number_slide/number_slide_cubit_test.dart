@@ -66,6 +66,21 @@ class FakeNumberSlideStorage implements GameStatsStorage {
     required String gameId,
     required String subKey,
   }) async {}
+
+  @override
+  Future<int?> getWordSearchBestTime(String difficulty) async => null;
+
+  @override
+  Future<bool> recordWordSearchCompletion({
+    required String difficulty,
+    required int timeInSeconds,
+  }) async => false;
+
+  @override
+  Future<int> getWordSearchPuzzlesCompleted(String difficulty) async => 0;
+
+  @override
+  Future<void> resetWordSearchStats(String difficulty) async {}
 }
 
 void main() {

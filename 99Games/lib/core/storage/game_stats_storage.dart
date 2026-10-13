@@ -77,6 +77,17 @@ abstract interface class GameStatsStorage {
   Future<bool> recordBlockPuzzleScore(int score);
 
   Future<void> resetBlockPuzzleBestScore();
+
+  Future<int?> getWordSearchBestTime(String difficulty);
+
+  Future<bool> recordWordSearchCompletion({
+    required String difficulty,
+    required int timeInSeconds,
+  });
+
+  Future<int> getWordSearchPuzzlesCompleted(String difficulty);
+
+  Future<void> resetWordSearchStats(String difficulty);
 }
 
 /// SharedPreferences-backed implementation of [GameStatsStorage].
@@ -169,5 +180,49 @@ class SharedGameStatsStorage implements GameStatsStorage {
   @override
   Future<void> resetBlockPuzzleBestScore() async {
     await _prefs.remove(_blockPuzzleBestScoreKey);
+  }
+
+  String _wordSearchBestTimeKey(String difficulty) =>
+      '${StorageKeys.gameStatsKey(StorageKeys.gameWordSearch, difficulty)}_best_time';
+
+  String _wordSearchCompletedKey(String difficulty) =>
+      '${StorageKeys.gameStatsKey(StorageKeys.gameWordSearch, difficulty)}_completed_count';
+
+  @override
+  Future<int?> getWordSearchBestTime(String difficulty) async {
+    return _prefs.getInt(_wordSearchBestTimeKey(difficulty));
+  }
+
+  @override
+  Future<bool> recordWordSearchCompletion({
+    required String difficulty,
+    required int timeInSeconds,
+  }) async {
+    // 1. Increment completed puzzle count
+    await incrementWordSearchPuzzlesCompleted(difficulty);
+
+    // 2. Check and record best time
+    final currentBest = await getWordSearchBestTime(difficulty);
+    if (currentBest == null || timeInSeconds < currentBest) {
+      await _prefs.setInt(_wordSearchBestTimeKey(difficulty), timeInSeconds);
+      return true;
+    }
+    return false;
+  }
+
+  @override
+  Future<int> getWordSearchPuzzlesCompleted(String difficulty) async {
+    return _prefs.getInt(_wordSearchCompletedKey(difficulty)) ?? 0;
+  }
+
+  Future<void> incrementWordSearchPuzzlesCompleted(String difficulty) async {
+    final current = await getWordSearchPuzzlesCompleted(difficulty);
+    await _prefs.setInt(_wordSearchCompletedKey(difficulty), current + 1);
+  }
+
+  @override
+  Future<void> resetWordSearchStats(String difficulty) async {
+    await _prefs.remove(_wordSearchBestTimeKey(difficulty));
+    await _prefs.remove(_wordSearchCompletedKey(difficulty));
   }
 }
