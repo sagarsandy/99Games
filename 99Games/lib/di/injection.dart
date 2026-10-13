@@ -1,0 +1,30 @@
+import 'package:get_it/get_it.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../core/storage/app_preferences.dart';
+import '../core/storage/game_stats_storage.dart';
+
+final GetIt getIt = GetIt.instance;
+
+/// Configures shared singleton services in GetIt.
+///
+/// Should be called after `WidgetsFlutterBinding.ensureInitialized()`
+/// and before `runApp()`.
+Future<void> configureDependencies({SharedPreferences? customPrefs}) async {
+  // If customPrefs is passed (e.g. for testing), use that; otherwise get default.
+  final prefs = customPrefs ?? await SharedPreferences.getInstance();
+
+  if (getIt.isRegistered<SharedPreferences>()) {
+    await getIt.reset();
+  }
+
+  getIt.registerSingleton<SharedPreferences>(prefs);
+
+  // Storage abstractions
+  getIt.registerLazySingleton<AppPreferences>(
+    () => SharedAppPreferences(getIt<SharedPreferences>()),
+  );
+
+  getIt.registerLazySingleton<GameStatsStorage>(
+    () => SharedGameStatsStorage(getIt<SharedPreferences>()),
+  );
+}

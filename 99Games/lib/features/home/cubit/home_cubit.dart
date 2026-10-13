@@ -1,0 +1,127 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/storage/storage_keys.dart';
+import 'home_state.dart';
+
+/// Cubit for the Home catalog and game discovery.
+class HomeCubit extends Cubit<HomeState> {
+  HomeCubit() : super(HomeState(allGames: _initialGamesCatalog));
+
+  static const List<GameInfo> _initialGamesCatalog = [
+    // 1. Playable Game: Tic-Tac-Toe
+    GameInfo(
+      id: StorageKeys.gameTicTacToe,
+      title: 'Tic-Tac-Toe',
+      description: 'Classic 3x3 strategy with smart AI & local 2P mode',
+      category: GameCategory.classic,
+      icon: Icons.grid_3x3_rounded,
+      accentColor: Color(0xFF6366F1),
+      isPlayable: true,
+      playerLabel: '1-2 Players',
+      route: '/games/tic-tac-toe',
+    ),
+    // 2. Playable Game: Number Slide (15 Puzzle)
+    GameInfo(
+      id: StorageKeys.gameNumberSlide,
+      title: 'Number Slide',
+      description: 'The classic 15 Puzzle. Slide tiles into ascending order',
+      category: GameCategory.puzzle,
+      icon: Icons.dialpad_rounded,
+      accentColor: Color(0xFF0EA5E9),
+      isPlayable: true,
+      playerLabel: '1 Player',
+      route: '/games/number-slide',
+    ),
+    // 3. Playable Game: Block Puzzle
+    GameInfo(
+      id: StorageKeys.gameBlockPuzzle,
+      title: 'Block Puzzle',
+      description: 'Fit geometric shapes into grid rows to clear lines',
+      category: GameCategory.puzzle,
+      icon: Icons.dashboard_customize_rounded,
+      accentColor: Color(0xFF8B5CF6),
+      isPlayable: true,
+      playerLabel: '1 Player',
+      route: '/games/block-puzzle',
+    ),
+    // Future Games (Preview only - strictly non-playable as per specification)
+    GameInfo(
+      id: 'sudoku',
+      title: 'Sudoku',
+      description: 'Classic logic numbers puzzle with multiple grid levels',
+      category: GameCategory.puzzle,
+      icon: Icons.border_all_rounded,
+      accentColor: Color(0xFF38BDF8),
+      isPlayable: false,
+      playerLabel: '1 Player',
+    ),
+    GameInfo(
+      id: 'memory_match',
+      title: 'Memory Match',
+      description: 'Card pairing challenge to test your visual memory',
+      category: GameCategory.brain,
+      icon: Icons.style_rounded,
+      accentColor: Color(0xFFEC4899),
+      isPlayable: false,
+      playerLabel: '1 Player',
+    ),
+    GameInfo(
+      id: 'word_search',
+      title: 'Word Search',
+      description: 'Find hidden words across themed puzzle boards',
+      category: GameCategory.word,
+      icon: Icons.spellcheck_rounded,
+      accentColor: Color(0xFF10B981),
+      isPlayable: false,
+      playerLabel: '1 Player',
+    ),
+    GameInfo(
+      id: 'number_merge',
+      title: 'Number Merge',
+      description: 'Slide and combine matching numbers to reach 2048',
+      category: GameCategory.puzzle,
+      icon: Icons.exposure_plus_1_rounded,
+      accentColor: Color(0xFFF59E0B),
+      isPlayable: false,
+      playerLabel: '1 Player',
+    ),
+    GameInfo(
+      id: 'number_match',
+      title: 'Number Match',
+      description: 'Pair numbers that match or add up to ten',
+      category: GameCategory.puzzle,
+      icon: Icons.calculate_rounded,
+      accentColor: Color(0xFF14B8A6),
+      isPlayable: false,
+      playerLabel: '1 Player',
+    ),
+    GameInfo(
+      id: 'hangman',
+      title: 'Hangman',
+      description: 'Guess the secret word before attempts run out',
+      category: GameCategory.word,
+      icon: Icons.text_fields_rounded,
+      accentColor: Color(0xFFF43F5E),
+      isPlayable: false,
+      playerLabel: '1 Player',
+    ),
+    GameInfo(
+      id: 'reaction_test',
+      title: 'Reaction Test',
+      description: 'Measure your reflex speed in milliseconds',
+      category: GameCategory.brain,
+      icon: Icons.speed_rounded,
+      accentColor: Color(0xFFF97316),
+      isPlayable: false,
+      playerLabel: '1 Player',
+    ),
+  ];
+
+  void selectCategory(GameCategory category) {
+    emit(state.copyWith(selectedCategory: category));
+  }
+
+  void updateSearch(String query) {
+    emit(state.copyWith(searchQuery: query));
+  }
+}
