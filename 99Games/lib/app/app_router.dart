@@ -4,6 +4,8 @@ import '../core/storage/game_stats_storage.dart';
 import '../di/injection.dart';
 import '../features/games/block_puzzle/cubit/block_puzzle_cubit.dart';
 import '../features/games/block_puzzle/presentation/block_puzzle_screen.dart';
+import '../features/games/dots_and_boxes/cubit/dots_and_boxes_cubit.dart';
+import '../features/games/dots_and_boxes/presentation/dots_and_boxes_screen.dart';
 import '../features/games/number_slide/cubit/number_slide_cubit.dart';
 import '../features/games/number_slide/presentation/number_slide_screen.dart';
 import '../features/games/tic_tac_toe/cubit/tic_tac_toe_cubit.dart';
@@ -46,6 +48,14 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => BlocProvider(
         create: (_) => WordSearchCubit(statsStorage: getIt<GameStatsStorage>()),
         child: const WordSearchScreen(),
+      ),
+    ),
+    GoRoute(
+      path: '/games/dots-and-boxes',
+      builder: (context, state) => BlocProvider(
+        create: (_) =>
+            DotsAndBoxesCubit(statsStorage: getIt<GameStatsStorage>()),
+        child: const DotsAndBoxesScreen(),
       ),
     ),
     GoRoute(

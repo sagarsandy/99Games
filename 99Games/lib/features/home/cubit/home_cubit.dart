@@ -56,6 +56,18 @@ class HomeCubit extends Cubit<HomeState> {
       playerLabel: '1 Player',
       route: '/games/word-search',
     ),
+    // 5. Playable Game: Dots and Boxes
+    GameInfo(
+      id: StorageKeys.gameDotsAndBoxes,
+      title: 'Dots and Boxes',
+      description: 'Connect dots, close boxes, and outsmart your opponent',
+      category: GameCategory.classic,
+      icon: Icons.grid_on_rounded,
+      accentColor: Color(0xFFF59E0B),
+      isPlayable: true,
+      playerLabel: '1-2 Players',
+      route: '/games/dots-and-boxes',
+    ),
     // Future Games (Preview only - strictly non-playable as per specification)
     GameInfo(
       id: 'sudoku',

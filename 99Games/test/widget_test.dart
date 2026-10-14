@@ -82,6 +82,24 @@ void main() {
       // Verify back on Home
       expect(find.text('99 Mini Games'), findsOneWidget);
       expect(find.text('Word Search'), findsOneWidget);
+      expect(find.text('Dots and Boxes'), findsOneWidget);
+
+      // 5. Navigate to Dots and Boxes
+      await tester.tap(find.text('Dots and Boxes'));
+      await tester.pumpAndSettle();
+
+      // Verify Dots and Boxes screen opened
+      expect(find.text('Dots and Boxes'), findsWidgets);
+      expect(find.text('BOARD SIZE (BOXES)'), findsOneWidget);
+      expect(find.text('New Game'), findsWidgets);
+
+      // Return to Home
+      await tester.tap(find.byTooltip('Back to Home'));
+      await tester.pumpAndSettle();
+
+      // Verify back on Home
+      expect(find.text('99 Mini Games'), findsOneWidget);
+      expect(find.text('Dots and Boxes'), findsOneWidget);
     },
   );
 }
