@@ -8,6 +8,9 @@ import '../features/games/dots_and_boxes/cubit/dots_and_boxes_cubit.dart';
 import '../features/games/dots_and_boxes/presentation/dots_and_boxes_screen.dart';
 import '../features/games/number_slide/cubit/number_slide_cubit.dart';
 import '../features/games/number_slide/presentation/number_slide_screen.dart';
+import '../features/games/sudoku/cubit/sudoku_cubit.dart';
+import '../features/games/sudoku/domain/sudoku_storage.dart';
+import '../features/games/sudoku/presentation/sudoku_screen.dart';
 import '../features/games/tic_tac_toe/cubit/tic_tac_toe_cubit.dart';
 import '../features/games/tic_tac_toe/presentation/tic_tac_toe_screen.dart';
 import '../features/games/word_search/cubit/word_search_cubit.dart';
@@ -56,6 +59,13 @@ final GoRouter appRouter = GoRouter(
         create: (_) =>
             DotsAndBoxesCubit(statsStorage: getIt<GameStatsStorage>()),
         child: const DotsAndBoxesScreen(),
+      ),
+    ),
+    GoRoute(
+      path: '/games/sudoku',
+      builder: (context, state) => BlocProvider(
+        create: (_) => SudokuCubit(storage: getIt<SudokuStorage>()),
+        child: const SudokuScreen(),
       ),
     ),
     GoRoute(

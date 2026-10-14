@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../core/storage/app_preferences.dart';
 import '../core/storage/game_stats_storage.dart';
+import '../features/games/sudoku/domain/sudoku_storage.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -26,5 +27,9 @@ Future<void> configureDependencies({SharedPreferences? customPrefs}) async {
 
   getIt.registerLazySingleton<GameStatsStorage>(
     () => SharedGameStatsStorage(getIt<SharedPreferences>()),
+  );
+
+  getIt.registerLazySingleton<SudokuStorage>(
+    () => SharedSudokuStorage(getIt<SharedPreferences>()),
   );
 }

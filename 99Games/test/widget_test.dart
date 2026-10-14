@@ -100,6 +100,27 @@ void main() {
       // Verify back on Home
       expect(find.text('99 Mini Games'), findsOneWidget);
       expect(find.text('Dots and Boxes'), findsOneWidget);
+      expect(find.text('Sudoku'), findsOneWidget);
+
+      // 6. Navigate to Sudoku
+      await tester.tap(find.text('Sudoku'));
+      await tester.pumpAndSettle();
+
+      // Verify Sudoku screen opened
+      expect(find.text('Sudoku'), findsWidgets);
+      expect(find.text('Mistakes: 0 / 3'), findsOneWidget);
+      expect(find.text('Notes'), findsOneWidget);
+      expect(find.text('Hint'), findsOneWidget);
+      expect(find.text('Undo'), findsOneWidget);
+      expect(find.text('Erase'), findsOneWidget);
+
+      // Return to Home
+      await tester.tap(find.byTooltip('Back to Home'));
+      await tester.pumpAndSettle();
+
+      // Verify back on Home
+      expect(find.text('99 Mini Games'), findsOneWidget);
+      expect(find.text('Sudoku'), findsOneWidget);
     },
   );
 }

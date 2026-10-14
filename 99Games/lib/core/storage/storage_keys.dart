@@ -11,6 +11,7 @@ abstract final class StorageKeys {
   static const String gameBlockPuzzle = 'block_puzzle';
   static const String gameWordSearch = 'word_search';
   static const String gameDotsAndBoxes = 'dots_and_boxes';
+  static const String gameSudoku = 'sudoku';
 
   // Key generator helper for game statistics
   static String gameStatsKey(String gameId, String subKey) =>

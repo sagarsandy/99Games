@@ -68,17 +68,19 @@ class HomeCubit extends Cubit<HomeState> {
       playerLabel: '1-2 Players',
       route: '/games/dots-and-boxes',
     ),
-    // Future Games (Preview only - strictly non-playable as per specification)
+    // 6. Playable Game: Sudoku
     GameInfo(
-      id: 'sudoku',
+      id: StorageKeys.gameSudoku,
       title: 'Sudoku',
       description: 'Classic logic numbers puzzle with multiple grid levels',
       category: GameCategory.puzzle,
       icon: Icons.border_all_rounded,
       accentColor: Color(0xFF38BDF8),
-      isPlayable: false,
+      isPlayable: true,
       playerLabel: '1 Player',
+      route: '/games/sudoku',
     ),
+    // Future Games (Preview only - strictly non-playable as per specification)
     GameInfo(
       id: 'memory_match',
       title: 'Memory Match',
