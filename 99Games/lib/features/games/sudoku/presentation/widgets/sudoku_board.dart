@@ -33,46 +33,46 @@ class SudokuBoard extends StatelessWidget {
       child: RepaintBoundary(
         child: Container(
           decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(
-            color: isDark ? Colors.white70 : const Color(0xFF0F172A),
-            width: 2.5,
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: isDark ? 0.35 : 0.08),
-              blurRadius: 14,
-              offset: const Offset(0, 4),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(
+              color: isDark ? Colors.white70 : const Color(0xFF0F172A),
+              width: 2.5,
             ),
-          ],
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(13.5),
-          child: Column(
-            children: [
-              for (int r = 0; r < 9; r++)
-                Expanded(
-                  child: Row(
-                    children: [
-                      for (int c = 0; c < 9; c++)
-                        Expanded(
-                          child: _buildCell(
-                            r * 9 + c,
-                            selectedIndex,
-                            selectedVal,
-                            relatedIndices,
-                          ),
-                        ),
-                    ],
-                  ),
-                ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: isDark ? 0.35 : 0.08),
+                blurRadius: 14,
+                offset: const Offset(0, 4),
+              ),
             ],
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(13.5),
+            child: Column(
+              children: [
+                for (int r = 0; r < 9; r++)
+                  Expanded(
+                    child: Row(
+                      children: [
+                        for (int c = 0; c < 9; c++)
+                          Expanded(
+                            child: _buildCell(
+                              r * 9 + c,
+                              selectedIndex,
+                              selectedVal,
+                              relatedIndices,
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+              ],
+            ),
           ),
         ),
       ),
-    ),
-  );
-}
+    );
+  }
 
   Widget _buildCell(
     int index,

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mini_games_99/app/app.dart';
 import 'package:mini_games_99/di/injection.dart';
@@ -121,6 +122,37 @@ void main() {
       // Verify back on Home
       expect(find.text('99 Mini Games'), findsOneWidget);
       expect(find.text('Sudoku'), findsOneWidget);
+
+      // 7. Scroll and Navigate to Number Match
+      await tester.scrollUntilVisible(
+        find.text('Number Match'),
+        200,
+        scrollable: find.descendant(
+          of: find.byType(GridView),
+          matching: find.byType(Scrollable),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('Number Match'), findsOneWidget);
+
+      await tester.tap(find.text('Number Match'));
+      await tester.pumpAndSettle();
+
+      // Verify Number Match screen opened
+      expect(find.text('Number Match'), findsWidgets);
+      expect(find.textContaining('Score: 0'), findsOneWidget);
+      expect(find.textContaining('Pairs: 0'), findsOneWidget);
+      expect(find.text('Hint'), findsOneWidget);
+      expect(find.text('Undo'), findsOneWidget);
+      expect(find.textContaining('Add (+'), findsOneWidget);
+      expect(find.text('Restart'), findsOneWidget);
+
+      // Return to Home
+      await tester.tap(find.byTooltip('Back to Home'));
+      await tester.pumpAndSettle();
+
+      // Verify back on Home
+      expect(find.text('99 Mini Games'), findsOneWidget);
     },
   );
 }

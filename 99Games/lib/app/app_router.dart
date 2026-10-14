@@ -15,6 +15,9 @@ import '../features/games/tic_tac_toe/cubit/tic_tac_toe_cubit.dart';
 import '../features/games/tic_tac_toe/presentation/tic_tac_toe_screen.dart';
 import '../features/games/word_search/cubit/word_search_cubit.dart';
 import '../features/games/word_search/presentation/word_search_screen.dart';
+import '../features/games/number_match/cubit/number_match_cubit.dart';
+import '../features/games/number_match/domain/number_match_storage.dart';
+import '../features/games/number_match/presentation/number_match_screen.dart';
 import '../features/home/presentation/home_screen.dart';
 import '../features/settings/presentation/settings_screen.dart';
 
@@ -66,6 +69,13 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => BlocProvider(
         create: (_) => SudokuCubit(storage: getIt<SudokuStorage>()),
         child: const SudokuScreen(),
+      ),
+    ),
+    GoRoute(
+      path: '/games/number-match',
+      builder: (context, state) => BlocProvider(
+        create: (_) => NumberMatchCubit(storage: getIt<NumberMatchStorage>()),
+        child: const NumberMatchScreen(),
       ),
     ),
     GoRoute(

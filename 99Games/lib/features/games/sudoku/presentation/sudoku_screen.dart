@@ -72,91 +72,91 @@ class _SudokuScreenState extends State<SudokuScreen>
 
         return SelectionContainer.disabled(
           child: Scaffold(
-          appBar: AppBar(
-            title: const Text('Sudoku'),
-            leading: IconButton(
-              icon: const Icon(Icons.arrow_back_rounded),
-              tooltip: 'Back to Home',
-              onPressed: () => context.pop(),
+            appBar: AppBar(
+              title: const Text('Sudoku'),
+              leading: IconButton(
+                icon: const Icon(Icons.arrow_back_rounded),
+                tooltip: 'Back to Home',
+                onPressed: () => context.pop(),
+              ),
+              actions: [
+                IconButton(
+                  icon: const Icon(Icons.help_outline_rounded),
+                  tooltip: 'How to Play',
+                  onPressed: () => _showRulesDialog(context),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.refresh_rounded),
+                  tooltip: 'New Game',
+                  onPressed: () => _confirmNewGame(context, state, cubit),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.delete_outline_rounded),
+                  tooltip: 'Reset Stats',
+                  onPressed: () => _confirmResetStats(context, cubit),
+                ),
+              ],
             ),
-            actions: [
-              IconButton(
-                icon: const Icon(Icons.help_outline_rounded),
-                tooltip: 'How to Play',
-                onPressed: () => _showRulesDialog(context),
-              ),
-              IconButton(
-                icon: const Icon(Icons.refresh_rounded),
-                tooltip: 'New Game',
-                onPressed: () => _confirmNewGame(context, state, cubit),
-              ),
-              IconButton(
-                icon: const Icon(Icons.delete_outline_rounded),
-                tooltip: 'Reset Stats',
-                onPressed: () => _confirmResetStats(context, cubit),
-              ),
-            ],
-          ),
-          body: SafeArea(
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                return SingleChildScrollView(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 8,
-                  ),
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      minHeight: constraints.maxHeight - 16,
+            body: SafeArea(
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  return SingleChildScrollView(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 8,
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        // Top Section: Difficulty & Status
-                        Column(
-                          children: [
-                            _buildDifficultySelector(context, state, cubit),
-                            const SizedBox(height: 10),
-                            _buildStatusBar(context, state),
-                            const SizedBox(height: 6),
-                            SudokuNotesPanel(state: state),
-                          ],
-                        ),
-
-                        // Center Section: Board
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 8),
-                          child: ConstrainedBox(
-                            constraints: BoxConstraints(
-                              maxWidth: 440,
-                              maxHeight: constraints.maxHeight * 0.54,
-                            ),
-                            child: SudokuBoard(state: state, cubit: cubit),
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(
+                        minHeight: constraints.maxHeight - 16,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          // Top Section: Difficulty & Status
+                          Column(
+                            children: [
+                              _buildDifficultySelector(context, state, cubit),
+                              const SizedBox(height: 10),
+                              _buildStatusBar(context, state),
+                              const SizedBox(height: 6),
+                              SudokuNotesPanel(state: state),
+                            ],
                           ),
-                        ),
 
-                        // Bottom Section: Controls & Number Pad
-                        Column(
-                          children: [
-                            SudokuGameControls(state: state, cubit: cubit),
-                            const SizedBox(height: 12),
-                            SudokuNumberPad(state: state, cubit: cubit),
-                            const SizedBox(height: 8),
-                          ],
-                        ),
-                      ],
+                          // Center Section: Board
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8),
+                            child: ConstrainedBox(
+                              constraints: BoxConstraints(
+                                maxWidth: 440,
+                                maxHeight: constraints.maxHeight * 0.54,
+                              ),
+                              child: SudokuBoard(state: state, cubit: cubit),
+                            ),
+                          ),
+
+                          // Bottom Section: Controls & Number Pad
+                          Column(
+                            children: [
+                              SudokuGameControls(state: state, cubit: cubit),
+                              const SizedBox(height: 12),
+                              SudokuNumberPad(state: state, cubit: cubit),
+                              const SizedBox(height: 8),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
-        ),
-      );
-    },
-  );
-}
+        );
+      },
+    );
+  }
 
   Widget _buildDifficultySelector(
     BuildContext context,
@@ -606,8 +606,9 @@ class _SudokuTimerPill extends StatelessWidget {
 
         final mStr = minutes.toString().padLeft(2, '0');
         final sStr = seconds.toString().padLeft(2, '0');
-        final formattedTime =
-            hours > 0 ? '${hours.toString().padLeft(2, '0')}:$mStr:$sStr' : '$mStr:$sStr';
+        final formattedTime = hours > 0
+            ? '${hours.toString().padLeft(2, '0')}:$mStr:$sStr'
+            : '$mStr:$sStr';
 
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
@@ -640,4 +641,3 @@ class _SudokuTimerPill extends StatelessWidget {
     );
   }
 }
-

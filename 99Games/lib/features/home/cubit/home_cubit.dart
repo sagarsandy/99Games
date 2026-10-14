@@ -80,6 +80,18 @@ class HomeCubit extends Cubit<HomeState> {
       playerLabel: '1 Player',
       route: '/games/sudoku',
     ),
+    // 7. Playable Game: Classic Number Match (Take Ten)
+    GameInfo(
+      id: StorageKeys.gameNumberMatch,
+      title: 'Number Match',
+      description: 'Match pairs of equal digits or pairs that sum to 10',
+      category: GameCategory.puzzle,
+      icon: Icons.onetwothree_rounded,
+      accentColor: Color(0xFFF97316),
+      isPlayable: true,
+      playerLabel: '1 Player',
+      route: '/games/number-match',
+    ),
     // Future Games (Preview only - strictly non-playable as per specification)
     GameInfo(
       id: 'memory_match',
@@ -98,16 +110,6 @@ class HomeCubit extends Cubit<HomeState> {
       category: GameCategory.puzzle,
       icon: Icons.exposure_plus_1_rounded,
       accentColor: Color(0xFFF59E0B),
-      isPlayable: false,
-      playerLabel: '1 Player',
-    ),
-    GameInfo(
-      id: 'number_match',
-      title: 'Number Match',
-      description: 'Pair numbers that match or add up to ten',
-      category: GameCategory.puzzle,
-      icon: Icons.calculate_rounded,
-      accentColor: Color(0xFF14B8A6),
       isPlayable: false,
       playerLabel: '1 Player',
     ),
