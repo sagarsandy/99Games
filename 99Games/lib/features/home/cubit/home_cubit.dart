@@ -117,6 +117,19 @@ class HomeCubit extends Cubit<HomeState> {
       playerLabel: '1 Player',
       route: '/games/emoji-connect',
     ),
+    // 10. Playable Game: Worm Escape
+    GameInfo(
+      id: StorageKeys.gameWormEscape,
+      title: 'Worm Escape',
+      description:
+          'Tap colorful segmented worms in the right order to free them all',
+      category: GameCategory.puzzle,
+      icon: Icons.alt_route_rounded,
+      accentColor: Color(0xFF10B981),
+      isPlayable: true,
+      playerLabel: '1 Player',
+      route: '/games/worm-escape',
+    ),
     // Future Games (Preview only - strictly non-playable as per specification)
     GameInfo(
       id: 'memory_match',

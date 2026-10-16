@@ -24,6 +24,9 @@ import '../features/games/reaction_test/presentation/reaction_test_screen.dart';
 import '../features/games/emoji_connect/cubit/emoji_connect_cubit.dart';
 import '../features/games/emoji_connect/domain/emoji_connect_storage.dart';
 import '../features/games/emoji_connect/presentation/emoji_connect_screen.dart';
+import '../features/games/worm_escape/cubit/worm_escape_cubit.dart';
+import '../features/games/worm_escape/domain/worm_escape_storage.dart';
+import '../features/games/worm_escape/presentation/worm_escape_screen.dart';
 import '../features/home/presentation/home_screen.dart';
 import '../features/settings/presentation/settings_screen.dart';
 
@@ -96,6 +99,13 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => BlocProvider(
         create: (_) => EmojiConnectCubit(storage: getIt<EmojiConnectStorage>()),
         child: const EmojiConnectScreen(),
+      ),
+    ),
+    GoRoute(
+      path: '/games/worm-escape',
+      builder: (context, state) => BlocProvider(
+        create: (_) => WormEscapeCubit(storage: getIt<WormEscapeStorage>()),
+        child: const WormEscapeScreen(),
       ),
     ),
     GoRoute(

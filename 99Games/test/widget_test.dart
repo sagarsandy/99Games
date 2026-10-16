@@ -205,6 +205,34 @@ void main() {
       expect(find.text('Board Flow'), findsOneWidget);
       expect(find.text('Hint'), findsOneWidget);
       expect(find.text('Undo'), findsOneWidget);
+      // Return to Home
+      await tester.tap(find.byTooltip('Back to Home'));
+      await tester.pumpAndSettle();
+
+      // Verify back on Home
+      expect(find.text('99 Mini Games'), findsOneWidget);
+
+      // 10. Scroll and Navigate to Worm Escape
+      await tester.scrollUntilVisible(
+        find.text('Worm Escape'),
+        200,
+        scrollable: find.descendant(
+          of: find.byType(GridView),
+          matching: find.byType(Scrollable),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('Worm Escape'), findsOneWidget);
+
+      await tester.tap(find.text('Worm Escape'));
+      await tester.pumpAndSettle();
+
+      // Verify Worm Escape screen opened
+      expect(find.text('Worm Escape'), findsWidgets);
+      expect(find.text('Escaped'), findsOneWidget);
+      expect(find.text('Moves'), findsOneWidget);
+      expect(find.text('Hint'), findsOneWidget);
+      expect(find.text('Undo'), findsOneWidget);
       expect(find.text('Reset'), findsOneWidget);
 
       // Return to Home

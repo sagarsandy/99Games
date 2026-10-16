@@ -15,6 +15,7 @@ abstract final class StorageKeys {
   static const String gameNumberMatch = 'number_match';
   static const String gameReactionTest = 'reaction_test';
   static const String gameEmojiConnect = 'emoji_connect';
+  static const String gameWormEscape = 'worm_escape';
 
   // Key generator helper for game statistics
   static String gameStatsKey(String gameId, String subKey) =>
