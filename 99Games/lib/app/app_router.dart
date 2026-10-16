@@ -27,6 +27,9 @@ import '../features/games/emoji_connect/presentation/emoji_connect_screen.dart';
 import '../features/games/worm_escape/cubit/worm_escape_cubit.dart';
 import '../features/games/worm_escape/domain/worm_escape_storage.dart';
 import '../features/games/worm_escape/presentation/worm_escape_screen.dart';
+import '../features/games/fish_family_rescue/cubit/fish_family_cubit.dart';
+import '../features/games/fish_family_rescue/domain/fish_family_storage.dart';
+import '../features/games/fish_family_rescue/presentation/fish_family_screen.dart';
 import '../features/home/presentation/home_screen.dart';
 import '../features/settings/presentation/settings_screen.dart';
 
@@ -106,6 +109,13 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => BlocProvider(
         create: (_) => WormEscapeCubit(storage: getIt<WormEscapeStorage>()),
         child: const WormEscapeScreen(),
+      ),
+    ),
+    GoRoute(
+      path: '/games/fish-family-rescue',
+      builder: (context, state) => BlocProvider(
+        create: (_) => FishFamilyCubit(storage: getIt<FishFamilyStorage>()),
+        child: const FishFamilyScreen(),
       ),
     ),
     GoRoute(

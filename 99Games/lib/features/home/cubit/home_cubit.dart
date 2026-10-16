@@ -130,6 +130,19 @@ class HomeCubit extends Cubit<HomeState> {
       playerLabel: '1 Player',
       route: '/games/worm-escape',
     ),
+    // 11. Playable Game: Fish Family Rescue
+    GameInfo(
+      id: StorageKeys.gameFishFamilyRescue,
+      title: 'Fish Family Rescue',
+      description:
+          'Sort colorful cartoon fish into tanks until every species is united',
+      category: GameCategory.puzzle,
+      icon: Icons.water_drop_rounded,
+      accentColor: Color(0xFF06B6D4),
+      isPlayable: true,
+      playerLabel: '1 Player',
+      route: '/games/fish-family-rescue',
+    ),
     // Future Games (Preview only - strictly non-playable as per specification)
     GameInfo(
       id: 'memory_match',

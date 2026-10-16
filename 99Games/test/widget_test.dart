@@ -241,6 +241,35 @@ void main() {
 
       // Verify back on Home
       expect(find.text('99 Mini Games'), findsOneWidget);
+
+      // 11. Scroll and Navigate to Fish Family Rescue
+      await tester.scrollUntilVisible(
+        find.text('Fish Family Rescue'),
+        200,
+        scrollable: find.descendant(
+          of: find.byType(GridView),
+          matching: find.byType(Scrollable),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('Fish Family Rescue'), findsOneWidget);
+
+      await tester.tap(find.text('Fish Family Rescue'));
+      await tester.pumpAndSettle();
+
+      // Verify Fish Family Rescue screen opened
+      expect(find.text('Fish Family Rescue'), findsWidgets);
+      expect(find.text('Baby Coral Reef'), findsOneWidget);
+      expect(find.text('Undo'), findsOneWidget);
+      expect(find.text('Restart'), findsOneWidget);
+      expect(find.text('Moves: 0'), findsOneWidget);
+
+      // Return to Home
+      await tester.tap(find.byTooltip('Back to Home'));
+      await tester.pumpAndSettle();
+
+      // Verify back on Home
+      expect(find.text('99 Mini Games'), findsOneWidget);
     },
   );
 }
