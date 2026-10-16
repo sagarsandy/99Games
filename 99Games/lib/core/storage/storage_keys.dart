@@ -19,6 +19,7 @@ abstract final class StorageKeys {
   static const String gameFishFamilyRescue = 'fish_family_rescue';
   static const String gameWordCircle = 'word_circle';
   static const String gameFruitCatcher = 'fruit_catcher';
+  static const String gameMemoryMatch = 'memory_match';
 
   // Key generator helper for game statistics
   static String gameStatsKey(String gameId, String subKey) =>

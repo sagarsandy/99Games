@@ -169,17 +169,20 @@ class HomeCubit extends Cubit<HomeState> {
       playerLabel: '1 Player',
       route: '/games/fruit-catcher',
     ),
-    // Future Games (Preview only - strictly non-playable as per specification)
+    // 14. Playable Game: Memory Match
     GameInfo(
-      id: 'memory_match',
+      id: StorageKeys.gameMemoryMatch,
       title: 'Memory Match',
-      description: 'Card pairing challenge to test your visual memory',
+      description:
+          'Flip cards and match cute cartoon pairs across 20 challenging levels',
       category: GameCategory.brain,
       icon: Icons.style_rounded,
-      accentColor: Color(0xFFEC4899),
-      isPlayable: false,
+      accentColor: Color(0xFF6366F1),
+      isPlayable: true,
       playerLabel: '1 Player',
+      route: '/games/memory-match',
     ),
+    // Future Games (Preview only - strictly non-playable as per specification)
     GameInfo(
       id: 'number_merge',
       title: 'Number Merge',

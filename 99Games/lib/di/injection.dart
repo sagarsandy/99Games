@@ -10,6 +10,7 @@ import '../features/games/worm_escape/domain/worm_escape_storage.dart';
 import '../features/games/fish_family_rescue/domain/fish_family_storage.dart';
 import '../features/games/word_circle/domain/word_circle_storage.dart';
 import '../features/games/fruit_catcher/domain/fruit_catcher_storage.dart';
+import '../features/games/memory_match/domain/memory_match_storage.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -66,5 +67,9 @@ Future<void> configureDependencies({SharedPreferences? customPrefs}) async {
 
   getIt.registerLazySingleton<FruitCatcherStorage>(
     () => SharedFruitCatcherStorage(getIt<SharedPreferences>()),
+  );
+
+  getIt.registerLazySingleton<MemoryMatchStorage>(
+    () => SharedMemoryMatchStorage(getIt<SharedPreferences>()),
   );
 }

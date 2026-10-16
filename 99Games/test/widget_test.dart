@@ -329,6 +329,35 @@ void main() {
 
       // Verify back on Home
       expect(find.text('99 Mini Games'), findsOneWidget);
+
+      // 14. Scroll and Navigate to Memory Match
+      await tester.scrollUntilVisible(
+        find.text('Memory Match'),
+        200,
+        scrollable: find.descendant(
+          of: find.byType(GridView),
+          matching: find.byType(Scrollable),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('Memory Match'), findsWidgets);
+
+      await tester.tap(find.text('Memory Match'));
+      await tester.pumpAndSettle();
+
+      // Verify Memory Match screen opened
+      expect(find.text('Memory Match'), findsWidgets);
+      expect(
+        find.byKey(const Key('memory_match_start_play_button')),
+        findsOneWidget,
+      );
+
+      // Return to Home
+      await tester.tap(find.byTooltip('Back to Home'));
+      await tester.pumpAndSettle();
+
+      // Verify back on Home
+      expect(find.text('99 Mini Games'), findsOneWidget);
     },
   );
 }

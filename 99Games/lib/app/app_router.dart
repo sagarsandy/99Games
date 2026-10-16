@@ -36,6 +36,9 @@ import '../features/games/word_circle/presentation/word_circle_screen.dart';
 import '../features/games/fruit_catcher/cubit/fruit_catcher_cubit.dart';
 import '../features/games/fruit_catcher/domain/fruit_catcher_storage.dart';
 import '../features/games/fruit_catcher/presentation/fruit_catcher_screen.dart';
+import '../features/games/memory_match/cubit/memory_match_cubit.dart';
+import '../features/games/memory_match/domain/memory_match_storage.dart';
+import '../features/games/memory_match/presentation/memory_match_screen.dart';
 import '../features/home/presentation/home_screen.dart';
 import '../features/settings/presentation/settings_screen.dart';
 
@@ -136,6 +139,14 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => BlocProvider(
         create: (_) => FruitCatcherCubit(storage: getIt<FruitCatcherStorage>()),
         child: const FruitCatcherScreen(),
+      ),
+    ),
+    GoRoute(
+      path: '/games/memory-match',
+      builder: (context, state) => BlocProvider(
+        create: (_) =>
+            MemoryMatchCubit(storage: getIt<MemoryMatchStorage>())..init(),
+        child: const MemoryMatchScreen(),
       ),
     ),
     GoRoute(
