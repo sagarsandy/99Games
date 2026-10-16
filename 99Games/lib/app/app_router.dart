@@ -18,6 +18,12 @@ import '../features/games/word_search/presentation/word_search_screen.dart';
 import '../features/games/number_match/cubit/number_match_cubit.dart';
 import '../features/games/number_match/domain/number_match_storage.dart';
 import '../features/games/number_match/presentation/number_match_screen.dart';
+import '../features/games/reaction_test/cubit/reaction_test_cubit.dart';
+import '../features/games/reaction_test/domain/reaction_test_storage.dart';
+import '../features/games/reaction_test/presentation/reaction_test_screen.dart';
+import '../features/games/emoji_connect/cubit/emoji_connect_cubit.dart';
+import '../features/games/emoji_connect/domain/emoji_connect_storage.dart';
+import '../features/games/emoji_connect/presentation/emoji_connect_screen.dart';
 import '../features/home/presentation/home_screen.dart';
 import '../features/settings/presentation/settings_screen.dart';
 
@@ -76,6 +82,20 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => BlocProvider(
         create: (_) => NumberMatchCubit(storage: getIt<NumberMatchStorage>()),
         child: const NumberMatchScreen(),
+      ),
+    ),
+    GoRoute(
+      path: '/games/reaction-test',
+      builder: (context, state) => BlocProvider(
+        create: (_) => ReactionTestCubit(storage: getIt<ReactionTestStorage>()),
+        child: const ReactionTestScreen(),
+      ),
+    ),
+    GoRoute(
+      path: '/games/emoji-connect',
+      builder: (context, state) => BlocProvider(
+        create: (_) => EmojiConnectCubit(storage: getIt<EmojiConnectStorage>()),
+        child: const EmojiConnectScreen(),
       ),
     ),
     GoRoute(

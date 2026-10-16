@@ -4,6 +4,8 @@ import '../core/storage/app_preferences.dart';
 import '../core/storage/game_stats_storage.dart';
 import '../features/games/sudoku/domain/sudoku_storage.dart';
 import '../features/games/number_match/domain/number_match_storage.dart';
+import '../features/games/reaction_test/domain/reaction_test_storage.dart';
+import '../features/games/emoji_connect/domain/emoji_connect_storage.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -36,5 +38,13 @@ Future<void> configureDependencies({SharedPreferences? customPrefs}) async {
 
   getIt.registerLazySingleton<NumberMatchStorage>(
     () => SharedNumberMatchStorage(getIt<SharedPreferences>()),
+  );
+
+  getIt.registerLazySingleton<ReactionTestStorage>(
+    () => SharedReactionTestStorage(getIt<SharedPreferences>()),
+  );
+
+  getIt.registerLazySingleton<EmojiConnectStorage>(
+    () => SharedEmojiConnectStorage(getIt<SharedPreferences>()),
   );
 }

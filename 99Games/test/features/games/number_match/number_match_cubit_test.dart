@@ -152,9 +152,11 @@ void main() {
       expect(cubit.state.isWon, isTrue);
       expect(
         cubit.state.score,
-        equals(NumberMatchEngine.pairScore +
-            NumberMatchEngine.rowClearBonus +
-            NumberMatchEngine.winBonus),
+        equals(
+          NumberMatchEngine.pairScore +
+              NumberMatchEngine.rowClearBonus +
+              NumberMatchEngine.winBonus,
+        ),
       ); // 10 + 10 + 100 = 120
 
       await Future<void>.delayed(Duration.zero);

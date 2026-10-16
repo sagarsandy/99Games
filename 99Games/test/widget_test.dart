@@ -153,6 +153,66 @@ void main() {
 
       // Verify back on Home
       expect(find.text('99 Mini Games'), findsOneWidget);
+
+      // 8. Scroll and Navigate to Reaction Test
+      await tester.scrollUntilVisible(
+        find.text('Reaction Test'),
+        200,
+        scrollable: find.descendant(
+          of: find.byType(GridView),
+          matching: find.byType(Scrollable),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('Reaction Test'), findsOneWidget);
+
+      await tester.tap(find.text('Reaction Test'));
+      await tester.pumpAndSettle();
+
+      // Verify Reaction Test screen opened
+      expect(find.text('Reaction Test'), findsWidgets);
+      expect(
+        find.text('Wait for green, then tap as quickly as possible.'),
+        findsOneWidget,
+      );
+      expect(find.text('Start Game'), findsOneWidget);
+
+      // Return to Home
+      await tester.tap(find.byTooltip('Back to Home'));
+      await tester.pumpAndSettle();
+
+      // Verify back on Home
+      expect(find.text('99 Mini Games'), findsOneWidget);
+
+      // 9. Scroll and Navigate to Emoji Connect
+      await tester.scrollUntilVisible(
+        find.text('Emoji Connect'),
+        200,
+        scrollable: find.descendant(
+          of: find.byType(GridView),
+          matching: find.byType(Scrollable),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('Emoji Connect'), findsOneWidget);
+
+      await tester.tap(find.text('Emoji Connect'));
+      await tester.pumpAndSettle();
+
+      // Verify Emoji Connect screen opened
+      expect(find.text('Emoji Connect'), findsWidgets);
+      expect(find.text('Pairs Connected'), findsOneWidget);
+      expect(find.text('Board Flow'), findsOneWidget);
+      expect(find.text('Hint'), findsOneWidget);
+      expect(find.text('Undo'), findsOneWidget);
+      expect(find.text('Reset'), findsOneWidget);
+
+      // Return to Home
+      await tester.tap(find.byTooltip('Back to Home'));
+      await tester.pumpAndSettle();
+
+      // Verify back on Home
+      expect(find.text('99 Mini Games'), findsOneWidget);
     },
   );
 }

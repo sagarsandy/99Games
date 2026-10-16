@@ -13,6 +13,8 @@ abstract final class StorageKeys {
   static const String gameDotsAndBoxes = 'dots_and_boxes';
   static const String gameSudoku = 'sudoku';
   static const String gameNumberMatch = 'number_match';
+  static const String gameReactionTest = 'reaction_test';
+  static const String gameEmojiConnect = 'emoji_connect';
 
   // Key generator helper for game statistics
   static String gameStatsKey(String gameId, String subKey) =>

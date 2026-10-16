@@ -92,6 +92,31 @@ class HomeCubit extends Cubit<HomeState> {
       playerLabel: '1 Player',
       route: '/games/number-match',
     ),
+    // 8. Playable Game: Reaction Test
+    GameInfo(
+      id: StorageKeys.gameReactionTest,
+      title: 'Reaction Test',
+      description: 'Measure your reflex speed in milliseconds',
+      category: GameCategory.brain,
+      icon: Icons.speed_rounded,
+      accentColor: Color(0xFF10B981),
+      isPlayable: true,
+      playerLabel: '1 Player',
+      route: '/games/reaction-test',
+    ),
+    // 9. Playable Game: Emoji Connect
+    GameInfo(
+      id: StorageKeys.gameEmojiConnect,
+      title: 'Emoji Connect',
+      description:
+          'Connect matching emoji pairs and cover every cell on the board',
+      category: GameCategory.puzzle,
+      icon: Icons.hub_rounded,
+      accentColor: Color(0xFF8B5CF6),
+      isPlayable: true,
+      playerLabel: '1 Player',
+      route: '/games/emoji-connect',
+    ),
     // Future Games (Preview only - strictly non-playable as per specification)
     GameInfo(
       id: 'memory_match',
@@ -120,16 +145,6 @@ class HomeCubit extends Cubit<HomeState> {
       category: GameCategory.word,
       icon: Icons.text_fields_rounded,
       accentColor: Color(0xFFF43F5E),
-      isPlayable: false,
-      playerLabel: '1 Player',
-    ),
-    GameInfo(
-      id: 'reaction_test',
-      title: 'Reaction Test',
-      description: 'Measure your reflex speed in milliseconds',
-      category: GameCategory.brain,
-      icon: Icons.speed_rounded,
-      accentColor: Color(0xFFF97316),
       isPlayable: false,
       playerLabel: '1 Player',
     ),
