@@ -7,7 +7,8 @@ enum GameCategory {
   classic('Classic'),
   puzzle('Puzzle'),
   brain('Brain & Memory'),
-  word('Word');
+  word('Word'),
+  arcade('Arcade');
 
   final String label;
   const GameCategory(this.label);

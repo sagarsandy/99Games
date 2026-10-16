@@ -156,6 +156,19 @@ class HomeCubit extends Cubit<HomeState> {
       playerLabel: '1 Player',
       route: '/games/word-circle',
     ),
+    // 13. Playable Game: Fruit Catcher
+    GameInfo(
+      id: StorageKeys.gameFruitCatcher,
+      title: 'Fruit Catcher',
+      description:
+          'Catch falling fruits with your basket and dodge explosive bombs in 60 seconds',
+      category: GameCategory.arcade,
+      icon: Icons.shopping_basket_rounded,
+      accentColor: Color(0xFFF59E0B),
+      isPlayable: true,
+      playerLabel: '1 Player',
+      route: '/games/fruit-catcher',
+    ),
     // Future Games (Preview only - strictly non-playable as per specification)
     GameInfo(
       id: 'memory_match',

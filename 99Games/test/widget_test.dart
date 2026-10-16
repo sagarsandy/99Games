@@ -300,6 +300,35 @@ void main() {
 
       // Verify back on Home
       expect(find.text('99 Mini Games'), findsOneWidget);
+
+      // 13. Scroll and Navigate to Fruit Catcher
+      await tester.scrollUntilVisible(
+        find.text('Fruit Catcher'),
+        200,
+        scrollable: find.descendant(
+          of: find.byType(GridView),
+          matching: find.byType(Scrollable),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('Fruit Catcher'), findsOneWidget);
+
+      await tester.tap(find.text('Fruit Catcher'));
+      await tester.pumpAndSettle();
+
+      // Verify Fruit Catcher screen opened
+      expect(find.text('Fruit Catcher'), findsWidgets);
+      expect(
+        find.byKey(const Key('fruit_catcher_start_play_button')),
+        findsOneWidget,
+      );
+
+      // Return to Home
+      await tester.tap(find.byTooltip('Back to Home'));
+      await tester.pumpAndSettle();
+
+      // Verify back on Home
+      expect(find.text('99 Mini Games'), findsOneWidget);
     },
   );
 }

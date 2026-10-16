@@ -33,6 +33,9 @@ import '../features/games/fish_family_rescue/presentation/fish_family_screen.dar
 import '../features/games/word_circle/cubit/word_circle_cubit.dart';
 import '../features/games/word_circle/domain/word_circle_storage.dart';
 import '../features/games/word_circle/presentation/word_circle_screen.dart';
+import '../features/games/fruit_catcher/cubit/fruit_catcher_cubit.dart';
+import '../features/games/fruit_catcher/domain/fruit_catcher_storage.dart';
+import '../features/games/fruit_catcher/presentation/fruit_catcher_screen.dart';
 import '../features/home/presentation/home_screen.dart';
 import '../features/settings/presentation/settings_screen.dart';
 
@@ -126,6 +129,13 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => BlocProvider(
         create: (_) => WordCircleCubit(storage: getIt<WordCircleStorage>()),
         child: const WordCircleScreen(),
+      ),
+    ),
+    GoRoute(
+      path: '/games/fruit-catcher',
+      builder: (context, state) => BlocProvider(
+        create: (_) => FruitCatcherCubit(storage: getIt<FruitCatcherStorage>()),
+        child: const FruitCatcherScreen(),
       ),
     ),
     GoRoute(
