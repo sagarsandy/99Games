@@ -143,6 +143,19 @@ class HomeCubit extends Cubit<HomeState> {
       playerLabel: '1 Player',
       route: '/games/fish-family-rescue',
     ),
+    // 12. Playable Game: Word Circle
+    GameInfo(
+      id: StorageKeys.gameWordCircle,
+      title: 'Word Circle',
+      description:
+          'Swipe letters on the wheel to form words and solve crossword puzzles',
+      category: GameCategory.word,
+      icon: Icons.track_changes_rounded,
+      accentColor: Color(0xFF0284C7),
+      isPlayable: true,
+      playerLabel: '1 Player',
+      route: '/games/word-circle',
+    ),
     // Future Games (Preview only - strictly non-playable as per specification)
     GameInfo(
       id: 'memory_match',

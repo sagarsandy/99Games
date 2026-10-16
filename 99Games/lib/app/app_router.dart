@@ -30,6 +30,9 @@ import '../features/games/worm_escape/presentation/worm_escape_screen.dart';
 import '../features/games/fish_family_rescue/cubit/fish_family_cubit.dart';
 import '../features/games/fish_family_rescue/domain/fish_family_storage.dart';
 import '../features/games/fish_family_rescue/presentation/fish_family_screen.dart';
+import '../features/games/word_circle/cubit/word_circle_cubit.dart';
+import '../features/games/word_circle/domain/word_circle_storage.dart';
+import '../features/games/word_circle/presentation/word_circle_screen.dart';
 import '../features/home/presentation/home_screen.dart';
 import '../features/settings/presentation/settings_screen.dart';
 
@@ -116,6 +119,13 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => BlocProvider(
         create: (_) => FishFamilyCubit(storage: getIt<FishFamilyStorage>()),
         child: const FishFamilyScreen(),
+      ),
+    ),
+    GoRoute(
+      path: '/games/word-circle',
+      builder: (context, state) => BlocProvider(
+        create: (_) => WordCircleCubit(storage: getIt<WordCircleStorage>()),
+        child: const WordCircleScreen(),
       ),
     ),
     GoRoute(

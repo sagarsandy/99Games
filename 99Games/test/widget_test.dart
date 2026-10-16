@@ -270,6 +270,36 @@ void main() {
 
       // Verify back on Home
       expect(find.text('99 Mini Games'), findsOneWidget);
+
+      // 12. Scroll and Navigate to Word Circle
+      await tester.scrollUntilVisible(
+        find.text('Word Circle'),
+        200,
+        scrollable: find.descendant(
+          of: find.byType(GridView),
+          matching: find.byType(Scrollable),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('Word Circle'), findsOneWidget);
+
+      await tester.tap(find.text('Word Circle'));
+      await tester.pumpAndSettle();
+
+      // Verify Word Circle screen opened
+      expect(find.text('Word Circle'), findsWidgets);
+      expect(find.textContaining('Level 1'), findsOneWidget);
+      expect(find.text('Shuffle'), findsOneWidget);
+      expect(find.text('Hint'), findsOneWidget);
+      expect(find.text('Clear'), findsOneWidget);
+      expect(find.text('Restart'), findsOneWidget);
+
+      // Return to Home
+      await tester.tap(find.byTooltip('Back to Home'));
+      await tester.pumpAndSettle();
+
+      // Verify back on Home
+      expect(find.text('99 Mini Games'), findsOneWidget);
     },
   );
 }

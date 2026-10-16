@@ -17,6 +17,7 @@ abstract final class StorageKeys {
   static const String gameEmojiConnect = 'emoji_connect';
   static const String gameWormEscape = 'worm_escape';
   static const String gameFishFamilyRescue = 'fish_family_rescue';
+  static const String gameWordCircle = 'word_circle';
 
   // Key generator helper for game statistics
   static String gameStatsKey(String gameId, String subKey) =>

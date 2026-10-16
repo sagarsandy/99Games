@@ -8,6 +8,7 @@ import '../features/games/reaction_test/domain/reaction_test_storage.dart';
 import '../features/games/emoji_connect/domain/emoji_connect_storage.dart';
 import '../features/games/worm_escape/domain/worm_escape_storage.dart';
 import '../features/games/fish_family_rescue/domain/fish_family_storage.dart';
+import '../features/games/word_circle/domain/word_circle_storage.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -56,5 +57,9 @@ Future<void> configureDependencies({SharedPreferences? customPrefs}) async {
 
   getIt.registerLazySingleton<FishFamilyStorage>(
     () => SharedFishFamilyStorage(getIt<SharedPreferences>()),
+  );
+
+  getIt.registerLazySingleton<WordCircleStorage>(
+    () => SharedWordCircleStorage(getIt<SharedPreferences>()),
   );
 }
